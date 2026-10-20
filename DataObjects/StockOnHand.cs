@@ -213,6 +213,9 @@ namespace wbm_common.DataObjects
         }
 
         public dbRow dbRow_instance { get; set; }
+
+        // Used by api/StockOnHandSaveList to insert many rows in one call
+        public List<dbRow> ListdbRow_instance { get; set; }
         public class dbRow : dbRowCreatedLast_Base
         {
             [Range(1, int.MaxValue, ErrorMessage = "CompanyID is required")]

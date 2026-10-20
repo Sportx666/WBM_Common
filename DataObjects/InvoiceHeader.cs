@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -219,6 +220,16 @@ namespace wbm_common.DataObjects
             [Range(0, int.MaxValue, ErrorMessage = "InvoiceFormatID is required")]
             public int InvoiceFormatID { get; set; }
             public DateTime? FirstExportDateTime { get; set; }
+
+            [NotMapped]
+            public string InvPrefixNumber
+            {
+                get
+                {
+                    return InvoicePrefix + InvoiceNumber.ToString();
+                }
+            }
+
         }
 
         public class dbRowExtended : dbRow
@@ -265,6 +276,7 @@ namespace wbm_common.DataObjects
                 return _ListChangeTrackerData;
             }
         }
+
 
     }
 }

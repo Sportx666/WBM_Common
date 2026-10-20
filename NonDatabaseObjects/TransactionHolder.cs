@@ -15,6 +15,8 @@ namespace wbm_common.NonDatabaseObjects
         public class Search : SearchCreatedLast_Base
         {
             public int TransactionHeaderID { get; set; }
+            public string TransactionReference { get; set; }
+            public int TransactionTypeID { get; set; }
 
             public enum SearchModeType
             {

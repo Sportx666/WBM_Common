@@ -93,7 +93,11 @@ namespace wbm_common.DataObjects
             TransactionType = 74,
             LongRunProcessStatusDescription = 75,
             ToDoStatus_Type = 76,
-            InvoiceHeader = 77
+            InvoiceHeader = 77,
+            PalletType = 78,
+            InvoiceReportGroup = 79,
+            InvoiceReportGroupDefn = 80,
+            InvoiceReportGroupMember = 81
         }
 
 

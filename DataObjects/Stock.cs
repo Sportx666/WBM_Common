@@ -325,7 +325,7 @@ namespace wbm_common.DataObjects
             public int SiteID { get; set; }
             [Required(AllowEmptyStrings = false, ErrorMessage = "ProductCode is required")]
             public string ProductCode { get; set; }
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Description is required")]
+            [Required(AllowEmptyStrings = true, ErrorMessage = "Description is required")]
             public string Description { get; set; }
             [Range(0, int.MaxValue, ErrorMessage = "CategoryID is required")]
             public int CategoryID { get; set; }
@@ -343,6 +343,10 @@ namespace wbm_common.DataObjects
             public int StockRateCategoryID { get; set; }
             [Range(0, int.MaxValue, ErrorMessage = "ItemsPerPallet is required")]
             public int ItemsPerPallet { get; set; }
+            [Range(0, int.MaxValue, ErrorMessage = "ItemsPerLayer is required")]
+            public int ItemsPerLayer { get; set; }
+            [Required(ErrorMessage = "LayerPickEligible is required")]
+            public bool LayerPickEligible { get; set; }
 
             public string Paperless_KeyID { get; set; }
         }
@@ -370,7 +374,7 @@ namespace wbm_common.DataObjects
         [JsonIgnore]
         public static readonly List<string> MyRequiredList = new List<string> { "CompanyID", "SiteID", "OwnerID", "ProductCode"
                 , "Description", "CategoryID", "Length", "Width", "Height", "Weight"
-                , "PalletStorageTypeID", "StockRateCategoryID", "ItemsPerPallet" };
+                , "PalletStorageTypeID", "StockRateCategoryID", "ItemsPerPallet", "ItemsPerLayer", "LayerPickEligible" };
         private static List<ChangeTrackerData> _ListChangeTrackerData;
 
         public static List<ChangeTrackerData> ListChangeTrackerData
@@ -394,6 +398,7 @@ namespace wbm_common.DataObjects
                         new ChangeTrackerData("PalletStorageTypeID", "Pallet Storage Type ID"),
                         new ChangeTrackerData("StockRateCategoryID", "Stock Rate Category ID"),
                         new ChangeTrackerData("ItemsPerPallet", "Items Per Pallet"),
+                        new ChangeTrackerData("ItemsPerLayer", "Items Per Layer"),
                         new ChangeTrackerData("Paperless_KeyID", "Paperless Key ID")
                     };
                 }

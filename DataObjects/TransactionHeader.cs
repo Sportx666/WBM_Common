@@ -305,7 +305,6 @@ namespace wbm_common.DataObjects
                         new ChangeTrackerData("TransactionTypeID", "Transaction Type ID"),
                         new ChangeTrackerData("TransactionReference", "Transaction Reference"),
                         new ChangeTrackerData("Description", "Description"),
-                        new ChangeTrackerData("InvoiceID", "Invoice ID"),
                         new ChangeTrackerData("InvoiceDateTime", "Invoice DateTime"),
                         new ChangeTrackerData("InvoiceExFuel", "Invoice ExFuel", true),
                         new ChangeTrackerData("InvoiceFuel", "Invoice Fuel", true),

@@ -260,6 +260,15 @@ namespace wbm_common.DataObjects
             [Range(0, int.MaxValue, ErrorMessage = "ActualCustomerFuel is required")]
             public decimal ActualCustomerFuel { get; set; }
             [Required(ErrorMessage = "ExceptionFlag is required")]
+
+            [NotMapped]
+            public Decimal ActualCustomerExGST
+            {
+                get
+                {
+                    return ActualCustomerExtended + ActualCustomerFuel;
+                }
+            }
             public Boolean ExceptionFlag { get; set; }
         }
 

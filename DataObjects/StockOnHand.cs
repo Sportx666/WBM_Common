@@ -236,6 +236,17 @@ namespace wbm_common.DataObjects
             public int RateCodeID { get; set; }
             [Range(1, int.MaxValue, ErrorMessage = "StorageRateCodeFromID is required")]
             public int StorageRateCodeFromID { get; set; }
+            public string PalletNumber { get; set; }
+            public int ZoneProcessingID { get; set; }
+            public string Status { get; set; }
+            public string ConversionCode { get; set; }
+            public DateTime? UseByDate { get; set; }
+            public string LotNumber { get; set; }
+            public Decimal PalletWeight { get; set; }
+            public int PalletWidth { get; set; }
+            public int PalletDepth { get; set; }
+            public int PalletHeight { get; set; }
+            public int PalletTypeID { get; set; }
         }
 
         public class dbRowExtended : dbRow
@@ -278,7 +289,18 @@ namespace wbm_common.DataObjects
                         new ChangeTrackerData("StockID", "Stock ID"),
                         new ChangeTrackerData("Quantity", "Quantity"),
                         new ChangeTrackerData("RateCodeID", "Rate Code ID"),
-                        new ChangeTrackerData("StorageRateCodeFromID", "Storage Rate Code From ID")
+                        new ChangeTrackerData("StorageRateCodeFromID", "Storage Rate Code From ID"),
+                        new ChangeTrackerData("PalletNumber", "Pallet Number"),
+                        new ChangeTrackerData("ZoneProcessingID", "Zone Processing ID"),
+                        new ChangeTrackerData("Status", "Status"),
+                        new ChangeTrackerData("ConversionCode", "Conversion Code"),
+                        new ChangeTrackerData("UseByDate", "Use By Date"),
+                        new ChangeTrackerData("LotNumber", "Lot Number"),
+                        new ChangeTrackerData("PalletWeight", "Pallet Weight", true),
+                        new ChangeTrackerData("PalletWidth", "Pallet Width"),
+                        new ChangeTrackerData("PalletDepth", "Pallet Depth"),
+                        new ChangeTrackerData("PalletHeight", "Pallet Height"),
+                        new ChangeTrackerData("PalletTypeID", "Pallet Type ID")
                     };
                 }
                 return _ListChangeTrackerData;

@@ -122,6 +122,8 @@ namespace wbm_common.DataObjects
                             Location.PublicLocationID AS Location_PublicLocationID,
                             RateCode.RateCode AS RateCode_RateCode,
                             StorageRateCodeFrom.PublicID AS StorageRateCodeFrom_PublicID,
+                            ZoneProcessing.ZoneNumber AS ZoneProcessing_ZoneNumber,
+                            PalletType.PublicID AS PalletType_PublicID,
                             Security_User.PublicID as Created_UserPublicID
                     FROM StockOnHand 
                         LEFT JOIN Site ON StockOnHand.SiteID = Site.ID
@@ -131,6 +133,8 @@ namespace wbm_common.DataObjects
                         LEFT JOIN Location ON StockOnHand.LocationID = Location.ID
                         LEFT JOIN RateCode ON StockOnHand.RateCodeID = RateCode.ID
                         LEFT JOIN StorageRateCodeFrom ON StockOnHand.StorageRateCodeFromID = StorageRateCodeFrom.ID
+                        LEFT JOIN ZoneProcessing ON StockOnHand.ZoneProcessingID = ZoneProcessing.ID
+                        LEFT JOIN PalletType ON StockOnHand.PalletTypeID = PalletType.ID
                         LEFT JOIN Security_User on StockOnHand.CreatedUserID = Security_User.ID
                     WHERE 1=1");
 
@@ -258,6 +262,8 @@ namespace wbm_common.DataObjects
             public string? Stock_ProductCode { get; set; }
             public string? RateCode_RateCode { get; set; }
             public string? StorageRateCodeFrom_PublicID { get; set; }
+            public string? ZoneProcessing_ZoneNumber { get; set; }
+            public string? PalletType_PublicID { get; set; }
             public string? Created_UserPublicID { get; set; }
 
         }

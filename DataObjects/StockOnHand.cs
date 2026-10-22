@@ -243,7 +243,6 @@ namespace wbm_common.DataObjects
             public string PalletNumber { get; set; }
             public int ZoneProcessingID { get; set; }
             public string Status { get; set; }
-            public string ConversionCode { get; set; }
             public DateTime? UseByDate { get; set; }
             public string LotNumber { get; set; }
             public Decimal PalletWeight { get; set; }
@@ -299,7 +298,6 @@ namespace wbm_common.DataObjects
                         new ChangeTrackerData("PalletNumber", "Pallet Number"),
                         new ChangeTrackerData("ZoneProcessingID", "Zone Processing ID"),
                         new ChangeTrackerData("Status", "Status"),
-                        new ChangeTrackerData("ConversionCode", "Conversion Code"),
                         new ChangeTrackerData("UseByDate", "Use By Date"),
                         new ChangeTrackerData("LotNumber", "Lot Number"),
                         new ChangeTrackerData("PalletWeight", "Pallet Weight", true),

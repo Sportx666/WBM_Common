@@ -122,6 +122,8 @@ namespace wbm_common.DataObjects
                             Location.PublicLocationID AS Location_PublicLocationID,
                             RateCode.RateCode AS RateCode_RateCode,
                             StorageRateCodeFrom.PublicID AS StorageRateCodeFrom_PublicID,
+                            ZoneProcessing.ZoneNumber AS ZoneProcessing_ZoneNumber,
+                            PalletType.PublicID AS PalletType_PublicID,
                             Security_User.PublicID as Created_UserPublicID
                     FROM StockOnHand 
                         LEFT JOIN Site ON StockOnHand.SiteID = Site.ID
@@ -131,6 +133,8 @@ namespace wbm_common.DataObjects
                         LEFT JOIN Location ON StockOnHand.LocationID = Location.ID
                         LEFT JOIN RateCode ON StockOnHand.RateCodeID = RateCode.ID
                         LEFT JOIN StorageRateCodeFrom ON StockOnHand.StorageRateCodeFromID = StorageRateCodeFrom.ID
+                        LEFT JOIN ZoneProcessing ON StockOnHand.ZoneProcessingID = ZoneProcessing.ID
+                        LEFT JOIN PalletType ON StockOnHand.PalletTypeID = PalletType.ID
                         LEFT JOIN Security_User on StockOnHand.CreatedUserID = Security_User.ID
                     WHERE 1=1");
 
@@ -213,6 +217,9 @@ namespace wbm_common.DataObjects
         }
 
         public dbRow dbRow_instance { get; set; }
+
+        // Used by api/StockOnHandSaveList to insert many rows in one call
+        public List<dbRow> ListdbRow_instance { get; set; }
         public class dbRow : dbRowCreatedLast_Base
         {
             [Range(1, int.MaxValue, ErrorMessage = "CompanyID is required")]
@@ -233,6 +240,16 @@ namespace wbm_common.DataObjects
             public int RateCodeID { get; set; }
             [Range(1, int.MaxValue, ErrorMessage = "StorageRateCodeFromID is required")]
             public int StorageRateCodeFromID { get; set; }
+            public string PalletNumber { get; set; }
+            public int ZoneProcessingID { get; set; }
+            public string Status { get; set; }
+            public DateTime? UseByDate { get; set; }
+            public string LotNumber { get; set; }
+            public Decimal PalletWeight { get; set; }
+            public int PalletWidth { get; set; }
+            public int PalletDepth { get; set; }
+            public int PalletHeight { get; set; }
+            public int PalletTypeID { get; set; }
         }
 
         public class dbRowExtended : dbRow
@@ -244,6 +261,8 @@ namespace wbm_common.DataObjects
             public string? Stock_ProductCode { get; set; }
             public string? RateCode_RateCode { get; set; }
             public string? StorageRateCodeFrom_PublicID { get; set; }
+            public string? ZoneProcessing_ZoneNumber { get; set; }
+            public string? PalletType_PublicID { get; set; }
             public string? Created_UserPublicID { get; set; }
 
         }
@@ -275,7 +294,17 @@ namespace wbm_common.DataObjects
                         new ChangeTrackerData("StockID", "Stock ID"),
                         new ChangeTrackerData("Quantity", "Quantity"),
                         new ChangeTrackerData("RateCodeID", "Rate Code ID"),
-                        new ChangeTrackerData("StorageRateCodeFromID", "Storage Rate Code From ID")
+                        new ChangeTrackerData("StorageRateCodeFromID", "Storage Rate Code From ID"),
+                        new ChangeTrackerData("PalletNumber", "Pallet Number"),
+                        new ChangeTrackerData("ZoneProcessingID", "Zone Processing ID"),
+                        new ChangeTrackerData("Status", "Status"),
+                        new ChangeTrackerData("UseByDate", "Use By Date"),
+                        new ChangeTrackerData("LotNumber", "Lot Number"),
+                        new ChangeTrackerData("PalletWeight", "Pallet Weight", true),
+                        new ChangeTrackerData("PalletWidth", "Pallet Width"),
+                        new ChangeTrackerData("PalletDepth", "Pallet Depth"),
+                        new ChangeTrackerData("PalletHeight", "Pallet Height"),
+                        new ChangeTrackerData("PalletTypeID", "Pallet Type ID")
                     };
                 }
                 return _ListChangeTrackerData;
